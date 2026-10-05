@@ -377,6 +377,18 @@ h4 { font-size: 16px; margin: 0; }
   color: var(--orange);
 }
 
+#lanes-toggle.active {
+  background: rgba(201, 250, 106, 0.18);
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+#cbba-toggle.active {
+  background: rgba(119, 200, 255, 0.18);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
 .chip-highlight {
   border-color: var(--cyan);
   color: var(--cyan);
@@ -1022,6 +1034,81 @@ footer>span { font-size: 11px; letter-spacing: 1px; }
   font-size: 13px;
   color: var(--lime);
   margin-top: 16px;
+}
+
+/* Algorithms Showcase Section */
+.algorithms-section {
+  background: radial-gradient(circle at 50% 0%, rgba(201, 250, 106, 0.04) 0%, transparent 60%), var(--bg);
+}
+
+.algo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.algo-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 28px 24px;
+  border-radius: 4px;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.algo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lime);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(201, 250, 106, 0.15);
+}
+
+.algo-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--lime);
+  background: rgba(201, 250, 106, 0.12);
+  border: 1px solid rgba(201, 250, 106, 0.3);
+  padding: 4px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 16px;
+  font-family: monospace;
+}
+
+.algo-card h3 {
+  font-size: 19px;
+  margin: 0 0 12px;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.algo-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.algo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.algo-tags span {
+  font-size: 11px;
+  background: #111a14;
+  border: 1px solid var(--line-light);
+  color: #a3b8aa;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-family: monospace;
 }
 
 /* Responsive adjustments */
