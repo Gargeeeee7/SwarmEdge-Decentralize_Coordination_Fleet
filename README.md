@@ -1,4 +1,4 @@
-# 🐝 SwarmEdge
+# SwarmEdge
 
 ### Decentralized Multi-Agent Coordination & Collision Avoidance Framework for Autonomous Mobile Robots (AMRs)
 
@@ -11,20 +11,20 @@
 
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 Modern automated warehouses and 3PL fulfillment centers depend on fleets of Autonomous Mobile Robots (AMRs) to move goods rapidly. However, **centralized cloud coordinators create severe operational bottlenecks**:
 * **High Network Latency:** Cloud roundtrips delay split-second intersection collision avoidance.
 * **Wi-Fi Dead Zones:** Dense steel storage racks cause RF shielding; disconnected AMRs freeze and cause massive aisle gridlocks.
 * **Single Point of Failure:** If the central server lags or crashes, the entire facility halts.
 
-> ### 💡 The SwarmEdge Principle
+> ### The SwarmEdge Principle
 > **"Decisions stay on the robot. The dashboard merely observes."**  
 > Each AMR runs its own onboard edge computer (e.g. Raspberry Pi 4/5 or NVIDIA Jetson Nano). Robots discover immediate neighbors within an RF bubble ($\text{Manhattan Radius} \le 4$), broadcast short-horizon intent, resolve intersection conflicts peer-to-peer, and re-auction tasks dynamically without a central motion planner.
 
 ---
 
-## 🚀 The Four SOTA Algorithmic Foundations
+## The Four SOTA Algorithmic Foundations
 
 SwarmEdge replaces simplistic heuristic rules with four peer-reviewed algorithms from multi-agent path finding (MAPF) and distributed robotics:
 
@@ -48,7 +48,7 @@ SwarmEdge replaces simplistic heuristic rules with four peer-reviewed algorithms
 
 ---
 
-## 📊 Empirical Benchmarks & SIH Compliance
+## Empirical Benchmarks & SIH Compliance
 
 Both SwarmEdge and the Traditional Serialized Stop-and-Wait Baseline were benchmarked under identical conditions on an 11×11 warehouse grid executing a standardized 18-job pickup-and-delivery order queue:
 
@@ -64,20 +64,20 @@ Both SwarmEdge and the Traditional Serialized Stop-and-Wait Baseline were benchm
 
 ---
 
-## 🛠️ Interactive Sandbox & Stress-Testing Features
+## Interactive Sandbox & Stress-Testing Features
 
 The included browser testbed provides real-time controls for evaluators and judges:
 
-* **⚡ Split-Screen Synchronous Comparison:** Runs SwarmEdge (Decentralized Edge) side-by-side with Traditional Stop-and-Wait (Central Lock) on identical workloads.
-* **⚠️ Wi-Fi Dead Zone Toggle:** Injects an RF-dead area in the center aisle. Disconnecting the monitoring dashboard demonstrates that AMRs continue operating 100% autonomously via the ad-hoc P2P mesh.
-* **📶 Simulated RF Packet Drop Slider:** Tests network resilience against $0\%$ to $40\%$ wireless packet loss.
-* **📦 Dynamic Obstacle Sandbox:** Click anywhere on the warehouse grid to place or remove custom obstacles; AMRs immediately compute localized $A^*$ perimeter bypass detours.
-* **🚨 Hardware Failure / Maintenance Mode:** Disabling Robot R1 triggers instant task re-auctioning via CBBA; peer robots absorb R1's orders and complete all deliveries with 0 collisions.
-* **🛣️ Virtual Traffic Lanes & CBBA Toggles:** Interactively switch directional highway biasing and multi-pallet bundling on or off.
+* **Split-Screen Synchronous Comparison:** Runs SwarmEdge (Decentralized Edge) side-by-side with Traditional Stop-and-Wait (Central Lock) on identical workloads.
+* **Wi-Fi Dead Zone Toggle:** Injects an RF-dead area in the center aisle. Disconnecting the monitoring dashboard demonstrates that AMRs continue operating 100% autonomously via the ad-hoc P2P mesh.
+* **Simulated RF Packet Drop Slider:** Tests network resilience against $0\%$ to $40\%$ wireless packet loss.
+* **Dynamic Obstacle Sandbox:** Click anywhere on the warehouse grid to place or remove custom obstacles; AMRs immediately compute localized $A^*$ perimeter bypass detours.
+* **Hardware Failure / Maintenance Mode:** Disabling Robot R1 triggers instant task re-auctioning via CBBA; peer robots absorb R1's orders and complete all deliveries with 0 collisions.
+* **Virtual Traffic Lanes & CBBA Toggles:** Interactively switch directional highway biasing and multi-pallet bundling on or off.
 
 ---
 
-## 🤖 Physical Edge Hardware Architecture
+## Physical Edge Hardware Architecture
 
 SwarmEdge is ready for deployment on embedded robotics compute boards without requiring an external cloud infrastructure:
 
@@ -121,7 +121,7 @@ python3 swarm_edge_node.py --id R1 --x 0 --y 5 --rank 0
 
 ---
 
-## 📡 Peer-to-Peer Message Protocol
+## Peer-to-Peer Message Protocol
 
 AMRs communicate using lightweight, decentralized JSON packets:
 
@@ -154,7 +154,7 @@ AMRs communicate using lightweight, decentralized JSON packets:
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 SwarmEdge-Website/
@@ -168,7 +168,7 @@ SwarmEdge-Website/
 
 ---
 
-## ⚡ Quickstart: Running Locally
+## Quickstart: Running Locally
 
 Clone the repository and launch the local HTTP testbed using Python or any lightweight static server:
 
@@ -185,7 +185,7 @@ Open your browser at **`http://localhost:8085`** to explore the interactive simu
 
 ---
 
-## 👥 Team & Submission Information
+## Team & Submission Information
 
 * **Competition:** Smart India Hackathon (SIH 2026)
 * **Problem Statement ID:** SIH26123
@@ -197,7 +197,7 @@ Open your browser at **`http://localhost:8085`** to explore the interactive simu
 
 ---
 
-## 📜 References & Academic Grounding
+## References & Academic Grounding
 
 1. **WHCA\* (Windowed Hierarchical Cooperative $A^*$):**  
    D. Silver, *"Cooperative Pathfinding"*, Proceedings of the AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment (AIIDE), 2005.
