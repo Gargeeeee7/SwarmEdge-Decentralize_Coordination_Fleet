@@ -264,10 +264,10 @@
 
       <details class="prototype-scope">
         <summary>Edge Architecture & Mathematical Proof Summary (WHCA* + CBBA + ORCA + Lanes)</summary>
-        <p><strong>1. Space-Time WHCA* (Algorithm A):</strong> Search state expanded to 3D tuple \((x, y, t)\) with lookahead horizon \(H = 4\). Reserves upcoming space-time waypoints to eliminate both vertex collisions \((x, y, t+1)\) and edge-swap collisions \((u \leftrightarrow v)\).</p>
-        <p><strong>2. Kinematic ORCA Smoothing (Algorithm B):</strong> Models non-holonomic AMR chassis rotation \(\theta(t) = \text{atan2}(\dot{y}, \dot{x})\) with continuous position interpolation and velocity vector updates at 60 FPS.</p>
-        <p><strong>3. CBBA Multi-Task Bundles (Algorithm C):</strong> Replaces single-task auctions with Consensus-Based Bundle Algorithm. Bids \(c_{ij} = \Delta \text{dist} + (100 - B_i) \times 0.08 + |B_i| \times 4.0\), enabling AMRs to carry up to 2 stacked pallets simultaneously.</p>
-        <p><strong>4. Virtual Traffic Lane Biasing (Algorithm D):</strong> Implements Amazon/Kiva warehouse highway rules with alternating directional aisles and a soft \(+2.5\) counter-flow penalty, preventing over 80% of head-on bottleneck deadlocks.</p>
+        <p><strong>1. Space-Time WHCA* (Algorithm A):</strong> Path planning is expanded to 3D spacetime coordinates (X, Y, and Time) with a 4-step rolling lookahead window. AMRs reserve upcoming waypoints in advance, which eliminates both same-cell collisions (entering the same spot at the same second) and head-on swap collisions (two AMRs trying to exchange spots in a narrow aisle: Robot A ⇄ Robot B).</p>
+        <p><strong>2. Kinematic ORCA Smoothing (Algorithm B):</strong> Replaces rigid tile jumps with smooth continuous steering. AMRs calculate their physical turn heading (θ) dynamically toward their motion vector and cruise at 1.2 m/s with 60 FPS position interpolation and forward headlight beams.</p>
+        <p><strong>3. CBBA Multi-Task Bundles (Algorithm C):</strong> Replaces single-task auctions with multi-job bundle bidding. Each AMR evaluates marginal travel distance, battery preservation, and current cargo count to bid on and transport up to 2 pallets simultaneously, doubling logistics throughput.</p>
+        <p><strong>4. Virtual Traffic Lane Biasing (Algorithm D):</strong> Implements Amazon/Kiva industrial highway rules. Alternating aisles act like one-way streets with a soft directional preference (+35% counter-flow cost), preventing over 80% of head-on standoffs while still allowing dock access.</p>
       </details>
     </section>
 
@@ -294,44 +294,44 @@
         <article class="algo-card">
           <div class="algo-badge">ALGORITHM A</div>
           <h3>Windowed Space-Time A* (WHCA*)</h3>
-          <p class="algo-desc">Plans in 3D spacetime \((x, y, t)\) over a rolling window \(H=4\). Unlike standard 2D A* which only sees physical walls, WHCA* reserves dynamic 4D bubbles that eliminate both cell collisions and edge-swap collisions before robots reach intersections.</p>
+          <p class="algo-desc">Plans in 3D spacetime (X, Y, and Time) over a 4-step rolling lookahead window. Unlike basic 2D pathfinders that only see static warehouse walls, WHCA* reserves dynamic spacetime slots in advance. This prevents both same-cell collisions and head-on aisle swaps (Robot A ⇄ Robot B) before robots reach shared intersections.</p>
           <div class="algo-tags">
-            <span>Horizon H=4</span>
-            <span>Edge-Swap Safe</span>
-            <span>Decentralized Window</span>
+            <span>Lookahead: 4 Steps</span>
+            <span>Zero Head-On Swaps</span>
+            <span>P2P Spacetime Mesh</span>
           </div>
         </article>
 
         <article class="algo-card">
           <div class="algo-badge">ALGORITHM B</div>
           <h3>Kinematic ORCA Smoothing</h3>
-          <p class="algo-desc">Translates discrete grid waypoints into smooth continuous-time differential drive physics. Calculates real-time orientation angles \(\theta = \text{atan2}(\Delta y, \Delta x)\), forward velocity vectors \((1.2\text{ m/s})\), and directional headlight cones.</p>
+          <p class="algo-desc">Converts discrete grid waypoints into smooth continuous-time differential drive physics. Dynamically rotates the vehicle chassis toward its direction of travel (heading angle θ), maintains a steady 1.2 m/s cruising velocity, and projects directional headlight cones with 60 FPS motion smoothing.</p>
           <div class="algo-tags">
-            <span>Continuous Rotation</span>
-            <span>Velocity Vectors</span>
-            <span>Smooth Lerp 60 FPS</span>
+            <span>Continuous Steering (θ)</span>
+            <span>Forward Velocity: 1.2 m/s</span>
+            <span>Smooth 60 FPS Lerp</span>
           </div>
         </article>
 
         <article class="algo-card">
           <div class="algo-badge">ALGORITHM C</div>
           <h3>Consensus-Based Bundle Algorithm (CBBA)</h3>
-          <p class="algo-desc">Extends simple single-item auctions to multi-task bundle allocation. Each AMR can bid on and carry up to 2 pallets simultaneously using marginal insertion costs and peer-to-peer consensus arbitration, doubling delivery throughput.</p>
+          <p class="algo-desc">Upgrades single-item bidding to a multi-task bundle allocation system. Each AMR calculates the marginal travel cost, battery drain, and cargo weight to bid on up to 2 pallets simultaneously, maintaining distributed consensus without a central dispatcher.</p>
           <div class="algo-tags">
-            <span>Multi-Task Bundling</span>
-            <span>Marginal Insertion</span>
-            <span>Capacity = 2 Pallets</span>
+            <span>Multi-Pallet Capacity: 2</span>
+            <span>Marginal Path Cost</span>
+            <span>Decentralized Consensus</span>
           </div>
         </article>
 
         <article class="algo-card">
           <div class="algo-badge">ALGORITHM D</div>
           <h3>Virtual Directional Traffic Lanes</h3>
-          <p class="algo-desc">Emulates Amazon/Kiva industrial highway rules. Alternating aisles enforce preferred East/West and North/South traversal with a soft \(+2.5\) counter-flow penalty, preventing over 80% of head-on standoffs before they start.</p>
+          <p class="algo-desc">Emulates Amazon and Kiva industrial warehouse highway rules. Alternating aisles enforce preferred East/West and North/South traversal with a gentle +35% counter-flow bias, naturally guiding opposing robots into separate lanes and cutting head-on standoffs by over 80%.</p>
           <div class="algo-tags">
-            <span>Directional Chevrons</span>
-            <span>Flow Biasing</span>
-            <span>80%+ Standoff Cut</span>
+            <span>Directional Aisle Chevrons</span>
+            <span>One-Way Flow Bias</span>
+            <span>80%+ Standoff Reduction</span>
           </div>
         </article>
       </div>

@@ -1004,7 +1004,7 @@ if (typeof document !== 'undefined') {
 
         if (walkthroughStep === 5) {
           bannerTitle.textContent = 'Phase 1: CBBA Multi-Task Bundle Auction & Space-Time WHCA*';
-          bannerText.textContent = 'AMRs build bundles of up to 2 logistics tasks. WHCA* reserves 4-step space-time windows (x, y, t) in advance.';
+          bannerText.textContent = 'AMRs build bundles of up to 2 logistics tasks. WHCA* reserves 4-step space-time windows (X, Y, and Time) in advance.';
         } else if (walkthroughStep === 20) {
           bannerTitle.textContent = 'Phase 2: Wi-Fi Dead Zone & Virtual Traffic Lanes';
           bannerText.textContent = 'Central cloud connection severed! Directional traffic lane biasing prevents head-on collisions without central coordinator.';
