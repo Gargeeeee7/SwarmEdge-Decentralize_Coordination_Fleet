@@ -1084,7 +1084,7 @@ if (typeof document !== 'undefined') {
     const btn = document.querySelector('#lanes-toggle');
     if (btn) {
       btn.classList.toggle('active', sim.trafficLanes);
-      btn.textContent = sim.trafficLanes ? '🛣️ Traffic Lanes: ON' : '🛣️ Traffic Lanes: OFF';
+      btn.textContent = sim.trafficLanes ? 'Traffic Lanes: ON' : 'Traffic Lanes: OFF';
     }
     sim.log(sim.trafficLanes ? 'Virtual Directional Traffic Lanes enabled.' : 'Free-grid navigation (Lanes OFF).');
     updateUI();
@@ -1135,7 +1135,7 @@ if (typeof document !== 'undefined') {
 
     if (singleContainer) singleContainer.hidden = splitMode;
     if (splitContainer) splitContainer.hidden = !splitMode;
-    if (btn) btn.textContent = splitMode ? 'Exit Split-Screen' : '⚡ Split-Screen Comparison';
+    if (btn) btn.textContent = splitMode ? 'Exit Split-Screen' : 'Split-Screen Comparison';
     updateUI();
   });
 
